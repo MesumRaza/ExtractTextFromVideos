@@ -16,7 +16,7 @@ print(l)
 
 diz={}
 for i in range(len(l)-1):
-    ffmpeg_extract_subclip("videorl.mp4", l[i], l[i+1], targetname="chunks/cut{}.mp4".format(i+1))
+    ffmpeg_extract_subclip("videorl.mp4", l[i]-2*(l[i]!=0), l[i+1], targetname="chunks/cut{}.mp4".format(i+1))
     clip = mp.VideoFileClip(r"chunks/cut{}.mp4".format(i+1)) 
     clip.audio.write_audiofile(r"converted/converted{}.wav".format(i+1))
     r = sr.Recognizer()
